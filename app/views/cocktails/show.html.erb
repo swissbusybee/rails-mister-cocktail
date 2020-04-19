@@ -1,2 +1,37 @@
- <%= @cocktail.name %>
- <%= link_to "Edit cocktail description", edit_cocktail_path(@cocktail), class: "btn" %>
+ <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @cocktail.picture_url %>);">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mt-4 col-sm-12 col-lg-6">
+      <h3><%= @cocktail.name %> Recipe</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Ingredient</th>
+            <th>Description</th>
+            <th>Action</th>
+          </thead>
+          <% @cocktail.doses.each do |dose| %>
+            <tr>
+              <td><%= dose.ingredient.name %></td>
+              <td><%= dose.description %></td>
+              <td>
+                <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fa fa-trash destroy_dose"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Add an Ingredient & Description', new_cocktail_dose_path(@cocktail), class: "btn btn-success" %>
+    </div>
+
+  </div>
+  <hr>
+    <%= link_to 'Back to cocktails', root_path, class: "btn btn-primary" %>
+</div>

@@ -1,9 +1,14 @@
+<div class="banner">
+  <h1>Le Cocktail Wagon</h1>
+  <p><span id="banner-typed-text"></span></p>
+</div>
+
 <div class="container mt-4">
   <div class="cards">
     <% @cocktails.each do |cocktail| %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.picture_url %>)">
         <div class="d-flex justify-content-between m-2">
-          <div><%= cocktail.name %></div>
+          <div><%= link_to cocktail.name, cocktail_path(cocktail) %></div>
         </div>
       </div>
     <% end %>
