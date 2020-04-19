@@ -1,9 +1,12 @@
-<h1>My Cocktails</h1>
+<div class="container mt-4">
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.picture_url %>)">
+        <div class="d-flex justify-content-between m-2">
+          <div><%= cocktail.name %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<% @cocktails.each do |cocktail| %>
-  <%= cocktail.name %>
-<% end %>
-
-<hr>
-
-<%= link_to 'Create a new Cocktail', new_cocktail_path %>
